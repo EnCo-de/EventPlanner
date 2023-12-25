@@ -1,0 +1,13 @@
+{% block content %}
+
+<nav>
+        <ul>
+                <li><a href="{% url 'index' %}">Միջոցառումների կազմակերպում</a></li>
+                <li><a href="{% url 'dashboard' %}">Պատվիրատուի կառավարման վահանակ</a></li>
+                <li><a href="{% url 'requirements' %}">Պատվիրել միջոցառում</a></li>
+                <li><a href="{% url 'success' %}">Շնորհավորանքներ !
+                Ձեր միջոցառումը հաջողությամբ ամրագրվել է:</a></li>
+        </ul>
+</nav>
+
+{% endblock content %}
