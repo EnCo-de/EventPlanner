@@ -1,0 +1,15 @@
+{% extends "clients/base.html" %}
+
+{% block content %}
+<main class="d-flex flex-nowrap">
+<!-- <aside></aside> -->
+
+  <h1 class="visually-hidden">Sidebars examples</h1>
+{% include "clients/sidebar.html" %}
+
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-body-primary" style="height: 100dvh; overflow: auto;">
+      <p class="fs-8">Client dashboard</p>
+      <p class="fs-12">Events</p>
+    </div>
+</main>
+{% endblock content %}

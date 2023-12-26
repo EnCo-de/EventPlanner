@@ -101,6 +101,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'customauth.apps.CustomauthConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,6 +151,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "customauth.ClientUserModel"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

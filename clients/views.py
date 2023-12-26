@@ -6,12 +6,13 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return render(request, 'clients/index.html')
- 
+
 def dashboard(request):
-    return HttpResponse("Client dashboard, events")
- 
+    return render(request, 'clients/dash.html')
+
+@login_required 
 def requirements(request):
-    return HttpResponse("Submit requirements")
+    return HttpResponse("Submit your requirements for the event")
  
 def success(request):
     return HttpResponse("Submission success, event details ")
