@@ -3,21 +3,32 @@
 {% block content %}
 
 {% comment %}
-{% endcomment %}
 <div class="m-4 p-4">
 {% include "clients/alerts.html" %}
 </div>
+{% endcomment %}
+
+{% if messages %}
+  {% for message in messages %}
+    {% include "clients/alert.html" %}
+  {% endfor %}
+{% endif %}
+<div class="m-5 p-5">
+<h1><a href="{% url 'index' %}">Միջոցառումների կազմակերպում</a></h1>
 <nav>
         <ul>
-                <li><a href="{% url 'index' %}">Միջոցառումների կազմակերպում</a></li>
+                {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'client_create' %}">Գրանցում</a></li>
+                <li><a href="{% url 'login' %}">Պատվիրատուի կառավարման վահանակ</a></li>
+                {% else %}
                 <li><a href="{% url 'dashboard' %}">Պատվիրատուի կառավարման վահանակ</a></li>
                 <li><a href="{% url 'ordering' %}">Պատվիրել միջոցառում</a></li>
+                {% endif %}
                 <li><a href="{% url 'success' %}">Շնորհավորանքներ !
                 Ձեր միջոցառումը հաջողությամբ ամրագրվել է:</a></li>
         </ul>
 </nav>
-<div>
-        <div class="d-grid gap-2 col-6 mx-auto">
+        <div class="d-grid gap-2 col-6 mt-4 mx-auto">
                 <button class="btn btn-warning" type="button">Button</button>
                 <button class="btn btn-success" type="button">Button</button>
         </div>

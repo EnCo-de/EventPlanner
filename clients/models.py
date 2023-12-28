@@ -28,9 +28,10 @@ class Order(models.Model):
     children = models.BooleanField(default=False, verbose_name='երեխայի, բալիկի համար')
     corporate = models.BooleanField(default=False, verbose_name='korporativ?')
     company = models.CharField(max_length=150, verbose_name='work', blank=True, null=True)
+    details = models.TextField(max_length=500, verbose_name='lracucich pahanjner, manramasner, hatuk cankutyunner', blank=True, null=True)
     real = models.BooleanField(default=False, verbose_name='is not test?', choices=((True,'real'),(False,'test')))
     pending = models.BooleanField(default=True)
-    
+
     created = models.DateTimeField(auto_now_add=True) 
     modified = models.DateTimeField(auto_now=True) 
 

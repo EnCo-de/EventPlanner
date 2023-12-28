@@ -7,15 +7,10 @@
       <h1 class="visually-hidden">Միջոցառումների կազմակերպում</h1>
       {% include "clients/sidebar.html" %}
     
-      <div class="w-auto min-vh-100 mh-100 overflow-auto flex-shrink-0 flex-grow-1 p-3 bg-primary bg-gradient indigo-500  text-wrap" style="width: 280px;">
-              <p class="fs-1 fw-bold">Client dashboard - ordering</p>
+      <div class="min-vh-100 mh-100 overflow-auto flex-grow-1 p-3 bg-primary bg-gradient text-white">
+        <p class="fs-1 fw-bold">Client dashboard - ordering</p>
               <p class="fs-5">Submit your requirements for the event</p>
-              <ul>
-              {% for order in orders %}
-                <li>{{ order }}</li>
-              {% empty %}
-              {% endfor %}
-              </ul>
+
               <form action="{% url 'ordering' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_div }}

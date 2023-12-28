@@ -1,0 +1,107 @@
+{% extends "clients/base.html" %}
+
+{% block content %}
+<main class="d-flex flex-nowrap  vh-100 vw-100 m-0 p-0">
+  <!-- <aside></aside> -->
+
+  <h1 class="visually-hidden">Միջոցառումների կազմակերպում</h1>
+  {% include "clients/sidebar.html" %}
+
+  <div class="min-vh-100 mh-100 overflow-auto flex-grow-1 p-3">
+      <h2>{{ order.get_category_display }}</h2>
+      <p class="fs-1 fw-bold">Order details</p>
+      <p class="fs-5">Your requirements</p>
+          
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Refreshed</div>
+                {{ order.modified | timesince }}
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">wortegh? </div>
+                  {{ order.venue }}
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">erb?</div>
+                at {{ order.date }}
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">budget</div>
+                {{ order.budget_min }} - {{ order.budget_max }} dram
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">participants</div>
+                {{ order.participants }} participants
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">children</div>
+                if {{ order.children }} there'll be children
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">corporate</div>
+                if {{ order.corporate }} corporate event at {{ order.company }}
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Nshvac lracucich pahanjner, manramasner, hatuk cankutyunner</div>
+                details {{ order.details }}
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+              </div>
+            </li>
+
+          </ul>
+          <h2>Միջոցառում show tsragir</h2>
+          <div class="list-group mb-5">
+            {% for show in order.shows.all %}
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 text-wrap">{{ show }}</h5>
+                <small class="text-body-secondary">3 days ago</small>
+              </div>
+              <p class="mb-1 text-wrap">{{ show.description }} content in a paragraph.</p>
+              <small class="text-body-secondary text-wrap">And some muted small print.</small>
+            </a>
+            {% endfor %}
+          </div>
+
+          <form action="{% url 'discard_order' order.pk %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="discard" value="{{ order.pk }}">
+            <div class="form-check">
+              <input type="checkbox" name="confirmation" class='form-check-input' id="confirmation" required>
+              <label class="form-check-label" for="confirmation">
+                <strong>Confirmation!</strong> Delete this order
+              </label>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-4">
+              <input type="submit" value="Delete" class="btn btn-lg btn-danger">
+            </div>
+          </form>
+  </div>
+</main>
+{% endblock content %}

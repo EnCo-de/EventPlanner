@@ -24,7 +24,7 @@
   </symbol>
 </svg>
 
-<aside class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary min-vh-100 mh-100 overflow-auto" style="width: 280px;">
+<aside class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary min-vh-100 mh-100 overflow-auto" style="width: 240px;">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
     <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
     <span class="fs-4">Sidebar</span>
@@ -69,11 +69,11 @@
       <strong>Պատվիրատու</strong>
     </a>
     <ul class="dropdown-menu text-small shadow">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="{% url 'ordering' %}">New project...</a></li>
       <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><a class="dropdown-item" href="{% url 'dashboard' %}">Profile</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
+      <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
     </ul>
   </div>
 </aside>

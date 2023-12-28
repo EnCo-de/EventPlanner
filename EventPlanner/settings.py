@@ -156,7 +156,7 @@ AUTH_USER_MODEL = "customauth.ClientUserModel"
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'hy' # 'en-us'
 
 TIME_ZONE = 'UTC'
 

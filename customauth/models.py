@@ -13,9 +13,9 @@ class ClientUserModel(AbstractUser):
         MinLengthValidator(9),
         RegexValidator(r'[0-9]$'),
         ])
-
+    
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = ['username', 'mobile']
 
     def __str__(self):
         return self.email
