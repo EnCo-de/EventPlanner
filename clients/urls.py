@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('dashboard', views.dashboard, name='dashboard'),
-    path('requirements', views.requirements, name='requirements'),
-    path('success', views.success, name='success'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('ordering/', views.ordering, name='ordering'),
+    path('success/', views.success, name='success'),
 ]
