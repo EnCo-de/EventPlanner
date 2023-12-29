@@ -20,7 +20,7 @@ class OrderForm(forms.ModelForm):
             else:
                 field.widget.attrs['class'] = 'form-control mb-2'
         self.fields.get('date').widget.attrs['placeholder'] = '25.12.23 15:30'
-        self.fields.get('date').input_formats = ['%d.%m.%y', '%d.%m.%y %H:%M', '%d/%m/%y', '%d/%m/%y %H:%M', '%d-%m-%y', '%d-%m-%y %H:%M', '%d-%m-%y %H:%M:%S', '%d-%m-%Y', '%d-%m-%Y %H:%M', '%d-%m-%Y %H:%M:%S',]
+        self.fields.get('date').input_formats = ['%d.%m.%y', '%d.%m.%y %H:%M', '%d/%m/%y', '%d/%m/%y %H:%M', '%d/%m/%Y', '%d/%m/%Y %H:%M', '%d-%m-%y', '%d-%m-%y %H:%M', '%d-%m-%y %H:%M:%S', '%d-%m-%Y', '%d-%m-%Y %H:%M', '%d-%m-%Y %H:%M:%S',]
         
     error_css_class = "is-invalid"
     # required_css_class = "required"

@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages import success
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import CreateView
@@ -32,6 +32,10 @@ def ordering(request):
             print('\n\n\t\t',order.real, form.cleaned_data.get('real'))
             print(request.POST)
             form.save_m2m()
+            html_message = '''<strong>Շնորհավորանքներ !</strong> 
+                <br>Ձեր միջոցառում կազմակերպելու դիմումը հաջողությամբ ամրագրվել է: 
+                '''
+            success(request, html_message)
             return redirect('dashboard')
     else:
         form = OrderForm()
@@ -55,5 +59,6 @@ def discard_order(request, pk):
         }
     return render(request, 'clients/discard_order.html', context=context)
 
-def success(request):
+@login_required 
+def edit_order(request):
     return HttpResponse("Submission success, event details ")

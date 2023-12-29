@@ -56,6 +56,12 @@ if DEBUG:
 
     STATIC_URL = 'static/'
 
+    STATICFILES_DIRS = [
+        # BASE_DIR / "static",
+        os.path.join(Path(__file__).resolve().parent, 'static'),
+        # "/var/www/static/",
+    ]
+
 else:
     import dj_database_url
 

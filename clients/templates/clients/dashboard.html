@@ -8,18 +8,17 @@
   {% include "clients/sidebar.html" %}
 
   <div class="min-vh-100 mh-100 overflow-auto flex-grow-1 p-3">
-          <p class="fs-1 fw-bold">Client dashboard</p>
-          <p class="fs-5">Events</p>
-
-          <div class="table-responsive">
+          <p class="fs-1 fw-bold">Պատվիրատուի անձնական վահանակ</p>
+          <h2>Պատվիրված միջոցառումներ</h2>
+          <div class="">
             <table class="table table-responsive table-bordered border-primary">
               <thead class="table-dark">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Event</th>
-                  <th scope="col">Place</th>
-                  <th scope="col">Shows</th>
+                  <th scope="col">Ամսաթիվ</th>
+                  <th scope="col">Իրադարձություն</th>
+                  <th scope="col">Անցկացման վայր</th>
+                  <th scope="col">Բաղադրիչներ</th>
                 </tr>
               </thead>
               <tbody>
@@ -27,46 +26,22 @@
                 <tr>
                   <th scope="row">{{ forloop.counter }}</th>
                   <td>{{ order.date }}</td>
-                  <td>{{ order.get_category_display }} <a href="{% url 'discard_order' order.pk %}" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">more info</a></td>
+                  <td class="text-capitalize">{{ order.get_category_display }} 
+                    <a href="{% url 'discard_order' order.pk %}" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    >ավելին</a></td>
                   <td>{{ order.venue }}</td>
                   <td>{% for show in order.shows.all %}{{ show }}, {% endfor %}</td>
                 </tr>
               {% empty %}
               <tr>
                 <th scope="row">0</th>
-                <td class="fs-3" colspan="4">No pending orders found. Please try again later. </td>
+                <td class="fs-3" colspan="4">Սպասվող միջոցառման պատվերների ընթացիկ 
+                  հայտարարությունները չեն գտնվել: Միգուցե ցանկանում եք <a href="{% url 'ordering' %}" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  >ավելացնել նոր հայտ</a>: </td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
-
-    <p class="fs-1">.fs-1 text</p>
-    <p class="fs-2">.fs-2 text</p>
-    <p class="fs-3">.fs-3 text</p>
-    <p class="fs-4">.fs-4 text</p>
-    <p class="fs-5">.fs-5 text</p>
-    <p class="fs-6">.fs-6 text</p>
-    <p class="fw-bold">Bold text.</p>
-    <p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
-    <p class="fw-semibold">Semibold weight text.</p>
-    <p class="fw-medium">Medium weight text.</p>
-    <p class="fw-normal">Normal weight text.</p>
-    <p class="fw-light">Light weight text.</p>
-    <p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
-    <p class="fst-italic">Italic text.</p>
-    <p class="fst-normal">Text with normal font style</p>
-    <hr>
-    <p class="text-start">Start aligned text on all viewport sizes.</p>
-    <p class="text-center">Center aligned text on all viewport sizes.</p>
-    <p class="text-end">End aligned text on all viewport sizes.</p>
-
-    <div class="badge bg-primary text-wrap" style="width: 6rem;">
-      This text should wrap.
-    </div>
-
-    <p class="text-lowercase">Lowercased text.</p>
-    <p class="text-uppercase">Uppercased text.</p>
-    <p class="text-capitalize">capiTaliZed text.</p>
   </div>
 </main>
 {% endblock content %}

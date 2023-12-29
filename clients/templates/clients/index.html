@@ -1,41 +1,40 @@
 {% extends "clients/base.html" %}
+{% load static %}
 
 {% block content %}
+<main style="min-height: 100vh; 
+      min-width: 100vw; 
+      margin: 0; 
+      background-image: url({% static 'images/wedding-ballroom.webp' %});
+      background-size: cover; 
+      background-position: center center;">
 
 {% comment %}
-<div class="m-4 p-4">
-{% include "clients/alerts.html" %}
-</div>
+                {% url 'success' %}
+
+  <div class="m-4 mt-0 p-4">
+    {% include "clients/alerts.html" %}
+  </div>
 {% endcomment %}
 
-{% if messages %}
-  {% for message in messages %}
-    {% include "clients/alert.html" %}
-  {% endfor %}
-{% endif %}
-<div class="m-5 p-5">
-<h1><a href="{% url 'index' %}">Միջոցառումների կազմակերպում</a></h1>
-<nav>
-        <ul>
-                {% if not request.user.is_authenticated %}
-                <li><a href="{% url 'client_create' %}">Գրանցում</a></li>
-                <li><a href="{% url 'login' %}">Պատվիրատուի կառավարման վահանակ</a></li>
-                {% else %}
-                <li><a href="{% url 'dashboard' %}">Պատվիրատուի կառավարման վահանակ</a></li>
-                <li><a href="{% url 'ordering' %}">Պատվիրել միջոցառում</a></li>
-                {% endif %}
-                <li><a href="{% url 'success' %}">Շնորհավորանքներ !
-                Ձեր միջոցառումը հաջողությամբ ամրագրվել է:</a></li>
-        </ul>
-</nav>
-        <div class="d-grid gap-2 col-6 mt-4 mx-auto">
-                <button class="btn btn-warning" type="button">Button</button>
-                <button class="btn btn-success" type="button">Button</button>
-        </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button">Button</button>
-                <button class="btn btn-primary" type="button">Button</button>
-        </div>
-
-</div>
+  {% if messages %}
+    {% for message in messages %}
+      {% include "clients/alert.html" %}
+    {% endfor %}
+  {% endif %}
+  <div class="m-5 mt-0 py-5 px-2" style="background-color: #fffb; width: fit-content;">
+    <h1>Միջոցառումների կազմակերպում</h1>
+    <nav>
+            <ul>
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="{% url 'login' %}">Մուտք պատվիրատուի կառավարման վահանակ</a></li>
+                    <li><a href="{% url 'client_create' %}">Գրանցում</a></li>
+                    {% else %}
+                    <li><a href="{% url 'dashboard' %}">Պատվիրատուի կառավարման վահանակ</a></li>
+                    <li><a href="{% url 'ordering' %}">Պատվիրել միջոցառում</a></li>
+                    {% endif %}
+            </ul>
+    </nav>
+  </div>
+</main>
 {% endblock content %}

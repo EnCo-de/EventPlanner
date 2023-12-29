@@ -11,21 +11,27 @@
 <form action="" method="post">
   {% csrf_token %}
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <label for="exampleInputEmail1" class="form-label"
+    >Էլ.փոստի հասցե</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div id="emailHelp" class="form-text"
+    >Էլեկտրոնային փոստի հասցեն, որով գրանցվել եք</div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <label for="exampleInputPassword1" class="form-label"
+    >Գաղտնաբառ</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="mb-3 form-check form-check-inline">
     <input type="checkbox" required class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <label class="form-check-label" for="exampleCheck1"
+    >Հիշել</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary"
+  >Շարունակել</button>
 </form>
 </div>
-<p><a href="{% url 'client_create' %}" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Գրանցում</a></p>
+<p><a href="{% url 'client_create' %}" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+  >Գրանցում</a></p>
 </div>
 {% endblock content %}

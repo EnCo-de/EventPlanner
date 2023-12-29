@@ -23,5 +23,5 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('ordering/', views.ordering, name='ordering'),
     path('discard-order/<int:pk>', views.discard_order, name='discard_order'),
-    path('success/', views.success, name='success'),
+    path('edit_order/<int:pk>', views.edit_order, name='edit_order'),
 ]

@@ -4,61 +4,68 @@
 <main class="d-flex flex-nowrap  vh-100 vw-100 m-0 p-0">
   <!-- <aside></aside> -->
 
-  <h1 class="visually-hidden">Միջոցառումների կազմակերպում</h1>
   {% include "clients/sidebar.html" %}
 
   <div class="min-vh-100 mh-100 overflow-auto flex-grow-1 p-3">
-      <h2>{{ order.get_category_display }}</h2>
-      <p class="fs-1 fw-bold">Order details</p>
-      <p class="fs-5">Your requirements</p>
+      <h1 class="text-center">Միջոցառումների կազմակերպում</h1>
+            <p class="fs-3 fw-bold">Պատվերի մանրամասները</p>
+      <p class="fs-5">Ձեր պահանջները</p>
           
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Refreshed</div>
+                <div class="fw-bold">Իրադարձություն</div>
+                <h2 class="fs-1 fw-bold text-center text-uppercase">{{ order.get_category_display }}</h2>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Թարմացվել է որոշ ժամանակ առաջ</div>
                 {{ order.modified | timesince }}
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">wortegh? </div>
+                <div class="fw-bold">Անցկացման վայր </div>
                   {{ order.venue }}
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">erb?</div>
+                <div class="fw-bold">Ամսաթիվ </div>
                 at {{ order.date }}
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">budget</div>
+                <div class="fw-bold text-capitalize">բյուջե</div>
                 {{ order.budget_min }} - {{ order.budget_max }} dram
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">participants</div>
-                {{ order.participants }} participants
+                <div class="fw-bold text-capitalize">մասնակիցների թիվը</div>
+                {{ order.participants }} մասնակից
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">children</div>
-                if {{ order.children }} there'll be children
+                <div class="fw-bold text-capitalize">երեխայի, բալիկի համար է ?</div>
+                {% if order.children %} Ներկա կլինեն երեխաներ։
+                {% else %}Կհավաքվեն միայն մեծահասակները:{% endif %}
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">corporate</div>
-                if {{ order.corporate }} corporate event at {{ order.company }}
+                <div class="fw-bold text-capitalize">Կորպորատիվ է</div>
+                {% if order.corporate %} Կորպորատիվ միջոցառում է {{ order.company }} ընկերությունում
+                {% else %}Ոչ{% endif %}
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Nshvac lracucich pahanjner, manramasner, hatuk cankutyunner</div>
-                details {{ order.details }}
+                <div class="fw-bold">Նշված լրացուցիչ պահանջներ, մանրամասներ, հատուկ ցանկություններ</div>
+                {{ order.details }}
               </div>
             </li>
             <li class="list-group-item">
