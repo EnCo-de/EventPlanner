@@ -4,18 +4,18 @@
 <main class="d-flex flex-nowrap  vh-100 vw-100 m-0 p-0">
     <!-- <aside></aside> -->
     
-      <h1 class="visually-hidden">Միջոցառումների կազմակերպում</h1>
       {% include "clients/sidebar.html" %}
     
       <div class="min-vh-100 mh-100 overflow-auto flex-grow-1 p-3 bg-primary bg-gradient text-white">
-        <p class="fs-1 fw-bold">Client dashboard - ordering</p>
-              <p class="fs-5">Submit your requirements for the event</p>
+        <h1 class="fs-1 fw-bold">Միջոցառումների կազմակերպում - Հաճախորդի վահանակ - պատվիրում</h1>
+              <p class="fs-5">Ներկայացրեք ձեր պահանջները միջոցառման համար</p>
 
               <form action="{% url 'ordering' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_div }}
                 <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-4">
-                  <input type="submit" value="Submit" class="btn btn-success">
+                  <input type="submit" class="btn btn-success" 
+                    value="Հանձնել դիմումը">
                 </div>
               </form>
       </div>

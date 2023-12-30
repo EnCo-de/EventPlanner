@@ -5,7 +5,7 @@ from django.core.validators import EmailValidator, MinLengthValidator, RegexVali
 # Create your models here.
 class ClientUserModel(AbstractUser):
     email = models.EmailField(
-        verbose_name="email address",
+        verbose_name="Էլ.փոստի հասցե",
         max_length=255,
         unique=True,
     )

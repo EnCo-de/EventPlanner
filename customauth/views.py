@@ -15,7 +15,8 @@ def client_create(request):
         if form.is_valid():
             client = form.save()
             html_message = '''<strong>Շնորհավորանքներ !</strong> 
-                <br>Ձեր դիմումը հաջողությամբ ամրագրվել է, փորձեք մուտք գործել: 
+                <br>Ձեր գրանցման դիմումը հաջողությամբ ընդունվել է: 
+                Փորձեք մուտք գործել: 
                 '''
             success(request, html_message)
             return redirect('login')
@@ -45,11 +46,11 @@ def client_edit(request):
     form = ClientCreationForm()
     return render(request, 'customauth/client_edit.html', {'form': form})
 
-@login_required
 def logout_view(request):
-    logout(request)
-    html_message = f'''<strong>Դուք դուրս եք եկել:</strong> 
-        <br>Կրկին փորձեք <a href="{reverse('login')}" class="alert-link">մուտք գործել </a>
-        '''
-    info(request, html_message)
+    if request.user.is_authenticated:
+        logout(request)
+        html_message = f'''<strong>Դուք դուրս եք եկել:</strong> 
+            <br>Կրկին փորձեք <a href="{reverse('login')}" class="alert-link">մուտք գործել </a>
+            '''
+        info(request, html_message)
     return redirect('index')

@@ -9,7 +9,6 @@
   <div class="min-vh-100 mh-100 overflow-auto flex-grow-1 p-3">
       <h1 class="text-center">Միջոցառումների կազմակերպում</h1>
             <p class="fs-3 fw-bold">Պատվերի մանրամասները</p>
-      <p class="fs-5">Ձեր պահանջները</p>
           
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -24,6 +23,7 @@
                 {{ order.modified | timesince }}
               </div>
             </li>
+      <p class="fs-5">Ձեր պահանջները</p>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
                 <div class="fw-bold">Անցկացման վայր </div>
@@ -33,13 +33,13 @@
             <li class="list-group-item">
               <div class="ms-2 me-auto">
                 <div class="fw-bold">Ամսաթիվ </div>
-                at {{ order.date }}
+                {{ order.date }}
               </div>
             </li>
             <li class="list-group-item">
               <div class="ms-2 me-auto">
                 <div class="fw-bold text-capitalize">բյուջե</div>
-                {{ order.budget_min }} - {{ order.budget_max }} dram
+                {{ order.budget_min }} - {{ order.budget_max }} հազար դրամ
               </div>
             </li>
             <li class="list-group-item">
@@ -68,32 +68,23 @@
                 {{ order.details }}
               </div>
             </li>
-            <li class="list-group-item">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-              </div>
-            </li>
-            <li class="list-group-item">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-              </div>
-            </li>
-
           </ul>
-          <h2>Միջոցառում show tsragir</h2>
-          <div class="list-group mb-5">
-            {% for show in order.shows.all %}
-            <a href="#" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 text-wrap">{{ show }}</h5>
-                <small class="text-body-secondary">3 days ago</small>
-              </div>
-              <p class="mb-1 text-wrap">{{ show.description }} content in a paragraph.</p>
-              <small class="text-body-secondary text-wrap">And some muted small print.</small>
-            </a>
-            {% endfor %}
+
+          <div class="my-5">
+            <h2>Պատվիրված Միջոցառման Բաղադրիչները</h2>
+            <div class="list-group mb-5">
+              {% for show in order.shows.all %}
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1 text-wrap">{{ show }}</h5>
+                  <small class="text-body-secondary">{{ forloop.counter }}</small>
+                </div>
+                <p class="mb-1 text-wrap">{{ show.description }}</p>
+                <small class="text-body-secondary text-wrap">
+                  Ստացված առաջարկներ չկան</small>
+              </a>
+              {% endfor %}
+            </div>
           </div>
 
           <form action="{% url 'discard_order' order.pk %}" method="post">
@@ -102,11 +93,11 @@
             <div class="form-check">
               <input type="checkbox" name="confirmation" class='form-check-input' id="confirmation" required>
               <label class="form-check-label" for="confirmation">
-                <strong>Confirmation!</strong> Delete this order
+                <strong>Հաստատում:</strong> Ջնջեք այս պատվերի հայտարարությունը
               </label>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-4">
-              <input type="submit" value="Delete" class="btn btn-lg btn-danger">
+              <input type="submit" value="Ջնջել" class="btn btn-lg btn-danger">
             </div>
           </form>
   </div>
