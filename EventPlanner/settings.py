@@ -69,7 +69,7 @@ else:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
     if RENDER_EXTERNAL_HOSTNAME := os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
-        ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
+        ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, 'mijocarumner.onrender.com']
 
     DATABASES = {
         'default': dj_database_url.config(
