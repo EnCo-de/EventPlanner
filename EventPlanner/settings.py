@@ -69,18 +69,18 @@ else:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
     if RENDER_EXTERNAL_HOSTNAME := os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
-        ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, 'mijocarumner.onrender.com']
+        ALLOWED_HOSTS = ['*', RENDER_EXTERNAL_HOSTNAME, 'mijocarumner.onrender.com', '0.0.0.0']
 
     DATABASES = {
         'default': dj_database_url.config(
             # Feel free to alter this value to suit your needs.
             default=os.environ.get('DATABASE_URL'),
-            conn_max_age=0
+            conn_max_age=10
         )
     }
 
-    
-    MIDDLEWARE = [ # dublicated in development
+    # dublicated in development
+    MIDDLEWARE = [ 
         'django.middleware.security.SecurityMiddleware',
         'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
@@ -93,17 +93,26 @@ else:
 
     # This setting tells Django at which URL static files are going to be served to the user.
     # Here, they well be accessible at your-domain.onrender.com/static/...
-    STATIC_URL = '/static/'
+    STATIC_URL = 'static/'
 
     # Following settings only make sense on production and may break development environments.
     # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # STATIC_ROOT = BASE_DIR / "staticfiles"
 
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+    # HTTPS
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True 
+
+    SECURE_SSL_REDIRECT = True
+
+
 
 # Application definition
 
