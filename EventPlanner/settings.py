@@ -57,10 +57,17 @@ if DEBUG:
     STATIC_URL = 'static/'
 
     STATICFILES_DIRS = [
-        # BASE_DIR / "static",
         os.path.join(Path(__file__).resolve().parent, 'static'),
+        # BASE_DIR / "static",
         # "/var/www/static/",
     ]
+
+    # HTTPS
+    """ CSRF_COOKIE_SECURE = True
+
+    SESSION_COOKIE_SECURE = True 
+
+    SECURE_SSL_REDIRECT = True """
 
 else:
     import dj_database_url
@@ -69,13 +76,13 @@ else:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
     if RENDER_EXTERNAL_HOSTNAME := os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
-        ALLOWED_HOSTS = ['*', RENDER_EXTERNAL_HOSTNAME, 'mijocarumner.onrender.com', '0.0.0.0']
+        ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
 
     DATABASES = {
         'default': dj_database_url.config(
             # Feel free to alter this value to suit your needs.
             default=os.environ.get('DATABASE_URL'),
-            conn_max_age=10
+            conn_max_age=0
         )
     }
 
@@ -93,7 +100,7 @@ else:
 
     # This setting tells Django at which URL static files are going to be served to the user.
     # Here, they well be accessible at your-domain.onrender.com/static/...
-    STATIC_URL = 'static/'
+    STATIC_URL = '/static/'
 
     # Following settings only make sense on production and may break development environments.
     # Tell Django to copy statics to the `staticfiles` directory
@@ -106,19 +113,10 @@ else:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-    # HTTPS
-    CSRF_COOKIE_SECURE = True
-
-    SESSION_COOKIE_SECURE = True 
-
-    SECURE_SSL_REDIRECT = True
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'customauth.apps.CustomauthConfig',
     'django.contrib.admin',
     'django.contrib.auth',
