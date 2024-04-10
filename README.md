@@ -1,3 +1,2 @@
-# EventPlanner
+# EventPlanner website
 
-https://mijocarumner.onrender.com
